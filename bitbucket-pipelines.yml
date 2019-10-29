@@ -1,0 +1,11 @@
+image: node:10
+
+pipelines:
+  branches:
+    master:
+      - step:
+          caches:
+            - node
+          script:
+            - yarn install
+            - yarn test
