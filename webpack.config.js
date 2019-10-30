@@ -6,7 +6,7 @@ module.exports = {
     index: './src/index.ts',
   },
   mode: 'production',
-  externals: [],
+  externals: [ 'winston', 'logform' ],
   resolve: {
     symlinks: false,
     extensions: [ '.js', '.json', '.ts' ],
