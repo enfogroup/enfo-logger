@@ -39,7 +39,7 @@ export const
       new winston.transports.Console(),
     ],
   },
-  createLogger = ({ schema, ...rest }: any) =>
+  createLogger = ({ schema, ...rest }: ILoggerOptions) =>
     winston.createLogger({ ...defaultOptions, ...rest, format: schema.format })
 
 export default createLogger({ schema: defaultSchema })
