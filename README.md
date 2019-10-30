@@ -32,15 +32,18 @@ logger.info('my text log')
 Making your own schema.
 ```typescript
 import { createLogger } from '@enfo/enfo-logger'
+import R from 'ramda'
 import winston from 'winston'
 
 const schema = {
     format: winston.format.printf(({ level, message }) => `LEVEL ${level}: ${message}`),
     parse: (x: string) =>
       Promise.resolve(x)
-        .then((s: string) => s.match(/^LEVEL (.+?): (.*)/s))
-        .then((result: string[] | null) => result || Promise.reject(new SyntaxError(`Could not parse log: ${x}`)))
-        .then(([ , level, message ]) => ({ level, message })),
+        .then(R.match(/^LEVEL (.+?): (.*)/s))
+        .then(R.when(
+          R.isNil,
+          () => Promise.reject(new SyntaxError(`Could not parse log: ${x}`))))
+        .then(([ , level, message ]) => ({ level, message }))
   }
 const logger = createLogger({ schema })
 logger.info('my custom log')
