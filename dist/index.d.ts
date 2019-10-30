@@ -7,6 +7,6 @@ export interface ISchema {
 export interface ILoggerOptions extends winston.LoggerOptions {
     readonly schema: ISchema;
 }
-export declare const defaultSchema: ISchema, textSchema: ISchema, defaultOptions: winston.LoggerOptions, createLogger: ({ schema, ...rest }: any) => winston.Logger;
+export declare const defaultSchema: ISchema, textSchema: ISchema, defaultOptions: winston.LoggerOptions, createLogger: ({ schema, ...rest }: ILoggerOptions) => winston.Logger;
 declare const _default: winston.Logger;
 export default _default;
