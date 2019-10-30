@@ -52,6 +52,15 @@ schema.parse('LEVEL info: my logged data')
 // resolves to { level: 'info', message: 'my logged data' }
 ```
 
+## Developing
+
+1. Clone the repo
+1. Run `yarn install`
+1. Run `yarn test-watch` to run the tests while deving
+1. Run `yarn build` to build
+
+Lint checks and tests are run automatically on commit and built by the pipeline on push.
+
 ## License
 
 enfo-logger is licensed under the terms of the MIT license.
