@@ -4,13 +4,13 @@ A small wrapper made to assist with logging following our internal standard.
 
 ## Install
 ```
-yarn add @enfo/enfo-logger
+yarn add winston @enfo/enfo-logger
 ```
 
 or
 
 ```
-npm i @enfo/enfo-logger
+npm i winston @enfo/enfo-logger
 ```
 
 ## Usage
