@@ -19,6 +19,7 @@ Using the `defaultSchema` which logs JSON.
 import logger from '@enfo/enfo-logger'
 
 logger.info('my first log')
+// {"message":"my first log","level":"info"}
 ```
 
 Using the `textSchema` which logs text.
@@ -27,6 +28,7 @@ import { createLogger, textSchema } from '@enfo/enfo-logger'
 
 const logger = createLogger({ schema: textSchema })
 logger.info('my text log')
+// [info]: my text log
 ```
 
 Making your own schema.
@@ -47,6 +49,7 @@ const schema = {
   }
 const logger = createLogger({ schema })
 logger.info('my custom log')
+// LEVEL info: my custom log
 
 schema.parse('LEVEL info: my logged data')
 // resolves to { level: 'info', message: 'my logged data' }
