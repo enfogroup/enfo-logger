@@ -60,7 +60,8 @@ schema.parse('LEVEL info: my logged data')
 1. Clone the repo
 1. Run `yarn install`
 1. Run `yarn test-watch` to run the tests while deving
-1. Run `yarn build` to build
+1. Run `git add . && yarn cm` to commit changes using [commitizen](https://github.com/commitizen/cz-cli)
+1. Run `yarn release` to create a new version using [standard-version](https://github.com/conventional-changelog/standard-version)
 
 Lint checks and tests are run automatically on commit and built by the pipeline on push.
 

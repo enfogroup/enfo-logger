@@ -1,12 +1,12 @@
 {
-  "name": "enfo-logger",
+  "name": "@enfo/enfo-logger",
   "version": "0.0.1",
   "main": "index.js",
   "types": "index.d.ts",
   "repository": "git@github.com:enfogroup/enfo-logger.git",
   "author": "Calle Kabo <calle@kabohub.co.nz>",
   "license": "MIT",
-  "homepage": "https://gitlab.com/kabo/eks-iam-auth#readme",
+  "homepage": "https://github.com/enfogroup/enfo-logger",
   "bugs": {
     "url": "https://github.com/enfogroup/enfo-logger/issues"
   },
@@ -16,7 +16,7 @@
     "clean": "rm -rf ./dist",
     "build-webpack": "webpack --config webpack.config.js",
     "build": "npm-run-all -s clean build-webpack",
-    "prerelease": "yarn lint && yarn build",
+    "prerelease": "yarn test && yarn build",
     "copy-to-dist": "cp package.json dist/ && cp *.md dist/ && cp .npmignore dist/",
     "release": "standard-version --no-verify",
     "lint": "eslint 'test/**/*.ts' 'src/**/*.ts'",
@@ -132,7 +132,7 @@
     "scripts": {
       "prerelease": "yarn prerelease",
       "postchangelog": "yarn copy-to-dist",
-      "posttag": "echo 'Now run git push && cd dist/ && yarn publish'"
+      "posttag": "echo 'Now run git push --follow-tags github master && cd dist/ && yarn publish'"
     }
   },
   "jest": {
