@@ -46,6 +46,24 @@ describe('index', () => {
       logger.info({ my: 'object' })
       expect(transport.getLogs()).toEqual([ '{"message":{"my":"object"},"level":"info"}' ])
     })
+    it('removes authorization', () => {
+      const transport = new TestTransport(),
+        logger = createLogger({ schema: defaultSchema, transports: [ transport ] })
+      logger.info({ my: 'object', authorization: 'should not be logged' })
+      expect(transport.getLogs()).toEqual([ '{"message":{"my":"object","authorization":"[REDACTED]"},"level":"info"}' ])
+    })
+    it('removes apiKey', () => {
+      const transport = new TestTransport(),
+        logger = createLogger({ schema: defaultSchema, transports: [ transport ] })
+      logger.info({ my: 'object', apiKey: 'should not be logged' })
+      expect(transport.getLogs()).toEqual([ '{"message":{"my":"object","apiKey":"[REDACTED]"},"level":"info"}' ])
+    })
+    it('removes api-key', () => {
+      const transport = new TestTransport(),
+        logger = createLogger({ schema: defaultSchema, transports: [ transport ] })
+      logger.info({ my: 'object', 'api-key': 'should not be logged' })
+      expect(transport.getLogs()).toEqual([ '{"message":{"my":"object","api-key":"[REDACTED]"},"level":"info"}' ])
+    })
     it('handles Error', () => {
       const transport = new TestTransport(),
         logger = createLogger({ schema: defaultSchema, transports: [ transport ] })

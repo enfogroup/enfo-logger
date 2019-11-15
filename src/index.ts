@@ -9,11 +9,26 @@ export interface ILoggerOptions extends winston.LoggerOptions {
   readonly schema: ISchema
 }
 
-const match = (re: RegExp) => (s: string) => s.match(re)
+const match = (re: RegExp) => (s: string) => s.match(re),
+  type = (a: any) =>
+    a === null ? 'Null'
+    : a === undefined ? 'Undefined'
+    : Object.prototype.toString.call(a).slice(8, -1),
+  anyPass = (preds: any[]) => (a: any) => preds.reduce((prev: boolean, pred: any) => prev || pred(a), false),
+  replace = (pred: any, substitute: any, obj: any) =>
+    // eslint-disable-next-line security/detect-object-injection
+    Object.keys(obj).reduce((acc: any, key: string) => ({ ...acc, [ key ]: pred(key) ? substitute : obj[ key ] }), {}),
+  censor = winston.format((info) =>
+    type(info.message) !== 'Object' ? info
+    : ({
+      ...info,
+      message: replace(anyPass([ match(/^authorization$/i), match(/^api-?key$/i) ]), '[REDACTED]', info.message),
+    }))
 
 export const
   defaultSchema: ISchema = {
     format: winston.format.combine(
+      censor(),
       winston.format.errors({ stack: true }),
       winston.format.json()
     ),
