@@ -36,6 +36,16 @@ export const
       Promise.resolve(x)
         .then(JSON.parse),
   },
+  jsonPrettyPrintSchema: ISchema = {
+    format: winston.format.combine(
+      censor(),
+      winston.format.errors({ stack: true }),
+      winston.format.json({ space: 2 })
+    ),
+    parse: (x: string) =>
+      Promise.resolve(x)
+        .then(JSON.parse),
+  },
   textSchema: ISchema = {
     format: winston.format.combine(
       winston.format.errors({ stack: true }),

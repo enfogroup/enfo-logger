@@ -1,7 +1,7 @@
 /* global describe, expect, it, jest */
 /* eslint-disable better/explicit-return, fp/no-unused-expression, fp/no-nil */
 import Transport from 'winston-transport'
-import log, { createLogger, defaultSchema, textSchema } from '../src/index'
+import log, { createLogger, defaultSchema, textSchema, jsonPrettyPrintSchema } from '../src/index'
 
 // eslint-disable-next-line fp/no-class
 class TestTransport extends Transport {
@@ -72,6 +72,17 @@ describe('index', () => {
     })
     it('parses JSON', () => {
       expect(defaultSchema.parse('{"message":"my test log","level":"info"}')).resolves.toEqual({ message: 'my test log', level: 'info' })
+    })
+  })
+  describe('jsonPrettyPrintSchema', () => {
+    it('logs pretty JSON', () => {
+      const transport = new TestTransport(),
+        logger = createLogger({ schema: jsonPrettyPrintSchema, transports: [ transport ] })
+      logger.info('my test log')
+      expect(transport.getLogs()).toEqual([ '{\n  "message": "my test log",\n  "level": "info"\n}' ])
+    })
+    it('parses pretty JSON', () => {
+      expect(jsonPrettyPrintSchema.parse('{\n  "message": "my test log",\n  "level": "info"\n}')).resolves.toEqual({ message: 'my test log', level: 'info' })
     })
   })
   describe('textSchema', () => {
