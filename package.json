@@ -1,6 +1,6 @@
 {
-  "name": "@enfogroupcloud/enfo-logger",
-  "version": "0.0.4",
+  "name": "@enfo/logger",
+  "version": "0.0.5",
   "main": "index.js",
   "types": "index.d.ts",
   "repository": "git@github.com:enfogroup/enfo-logger.git",
