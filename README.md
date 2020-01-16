@@ -4,19 +4,19 @@ A small wrapper made to assist with logging following our internal standard.
 
 ## Install
 ```
-yarn add winston @enfo/enfo-logger
+yarn add winston @enfo/logger
 ```
 
 or
 
 ```
-npm i winston @enfo/enfo-logger
+npm i winston @enfo/logger
 ```
 
 ## Usage
 Using the `defaultSchema` which logs JSON.
 ```typescript
-import logger from '@enfo/enfo-logger'
+import logger from '@enfo/logger'
 
 logger.info('my first log')
 // {"message":"my first log","level":"info"}
@@ -24,7 +24,7 @@ logger.info('my first log')
 
 Using the `textSchema` which logs text.
 ```typescript
-import { createLogger, textSchema } from '@enfo/enfo-logger'
+import { createLogger, textSchema } from '@enfo/logger'
 
 const logger = createLogger({ schema: textSchema })
 logger.info('my text log')
@@ -33,7 +33,7 @@ logger.info('my text log')
 
 Making your own schema.
 ```typescript
-import { createLogger } from '@enfo/enfo-logger'
+import { createLogger } from '@enfo/logger'
 import R from 'ramda'
 import winston from 'winston'
 

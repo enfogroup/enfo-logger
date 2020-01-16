@@ -132,7 +132,7 @@
     "scripts": {
       "prerelease": "yarn prerelease",
       "postchangelog": "yarn copy-to-dist",
-      "posttag": "echo 'Now run git push --follow-tags github master && cd dist/ && yarn publish'"
+      "posttag": "echo 'Now run cd dist/ && yarn publish && cd ../ && git push --follow-tags origin master'"
     }
   },
   "jest": {
