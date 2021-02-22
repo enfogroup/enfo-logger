@@ -57,14 +57,14 @@ export const
         .then((result: string[] | null) => result || Promise.reject(new SyntaxError(`Could not parse log: ${x}`)))
         .then(([ , level, message ]) => ({ level, message })),
   },
-  defaultOptions: winston.LoggerOptions = {
+  getDefaultOptions = (): winston.LoggerOptions => ({
     level: 'info',
     format: defaultSchema.format,
     transports: [
       new winston.transports.Console(),
     ],
-  },
+  }),
   createLogger = ({ schema, ...rest }: ILoggerOptions) =>
-    winston.createLogger({ ...defaultOptions, ...rest, format: schema.format })
+    winston.createLogger({ ...getDefaultOptions(), ...rest, format: schema.format })
 
 export default createLogger({ schema: defaultSchema })
