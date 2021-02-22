@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/enfogroup/enfo-logger/compare/v1.0.1...v2.0.0) (2021-02-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* defaultOptions replaced by getDefaultOptions()
+
+### Bug Fixes
+
+* defaultOptions transport fix ([a6af570](https://github.com/enfogroup/enfo-logger/commit/a6af57016ceab670f0de0f361c01f6c60406ed0e))
+
 ### [1.0.1](https://github.com/enfogroup/enfo-logger/compare/v0.0.11...v1.0.1) (2020-01-19)
 
 ### [0.0.11](https://github.com/enfogroup/enfo-logger/compare/v0.0.10...v0.0.11) (2020-01-16)
