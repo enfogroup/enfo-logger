@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: false,
   entry: {
     index: './src/index.ts',
   },
@@ -18,6 +18,17 @@ module.exports = {
   },
   target: 'node',
   module: {
-    rules: [ { test: /\.ts(x?)$/, include: path.resolve(__dirname, 'src'), loader: 'ts-loader' } ],
+    rules: [
+      {
+        test: /\.ts(x?)$/,
+        include: path.resolve(__dirname, 'src'),
+        loader: 'esbuild-loader',
+        options: {
+          target: 'es2020',
+          sourcemap: false,
+          loader: 'ts',
+        },
+      },
+    ],
   },
 }
