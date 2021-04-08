@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/enfogroup/enfo-logger/compare/v2.0.0...v3.0.0) (2021-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Requires es2020
+
+### Bug Fixes
+
+* only import type from logform ([4e4ae1b](https://github.com/enfogroup/enfo-logger/commit/4e4ae1ba60c043bb8ad957af1322e5abb3ef5c77))
+
+
+### build
+
+* faster builds, include type declarations, es2020 ([3ea32fb](https://github.com/enfogroup/enfo-logger/commit/3ea32fba3a3ef73e4b951ff111a95561dc0c703c))
+
 ## [2.0.0](https://github.com/enfogroup/enfo-logger/compare/v1.0.1...v2.0.0) (2021-02-22)
 
 
