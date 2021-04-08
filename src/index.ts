@@ -1,4 +1,4 @@
-import { Format } from 'logform'
+import type { Format } from 'logform'
 import winston from 'winston'
 
 export interface ISchema {
